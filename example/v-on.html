@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>v-on实例</title>
+        <script type="text/javascript" src="../assets/js/vue.js">
+        </script>
+    </head>
+    <body>
+        <h1>v-on</h1>
+        <div id="app">
+            本轮比赛得分：{{ score }}
+            <p>
+                <button v-on:click="addScore">加分</button>
+                <button @click="decScore">减分</button>
+                <input type="text" @keyup.13="mulScore" v-model="score2">回车自定义加分
+            </p>
+        </div>
+        <script type="text/javascript">
+            var app = new Vue({
+                el : '#app',
+                data:{
+                    score:0,
+                    score2:1,
+                },
+                methods:{
+                    addScore:function(){
+                        this.score++;
+                    },
+                    decScore:function(){
+                        this.score--;
+                    },
+                    mulScore:function(){
+                        this.score = this.score + parseInt(this.score2);
+                    },
+                },
+                computed: {
+
+                }
+            });
+
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>v-model实例</title>
+        <script type="text/javascript" src="../assets/js/vue.js">
+        </script>
+    </head>
+    <body>
+        <h1>v-model</h1>
+        <div id="app">
+            <p>原始文本信息{{ message }}</p>
+                <h2>文本框</h2>
+                <p></p>v-model:<input type="text" v-model="message">
+                <p></p>v-model.lazy:<input type="text" v-model.lazy="message">
+                <p></p>v-model.number:<input type="text" v-model.number="message">
+                <p></p>v-model.trim:<input type="text" v-model.trim="message">
+
+                <h2>文本框</h2>
+                <input type="textarea" cols="30" rows="10" v-model="message">
+                <hr>
+                <h2>多选框绑定</h2>
+                <input type="checkbox" id="isTrue" v-model="isTrue">
+                <label for="isTrue">{{isTrue}}</label>
+                <hr>
+                <h2>绑定到数组</h2>
+                <input type="checkbox" id="zzilcc" value="zilcc" v-model="web_names">
+                <label for="isTrue">zzilcc</label>
+                <input type="checkbox" id="hzq" value="hzq" v-model="web_names">
+                <label for="isTrue">hzq</label>
+                <input type="checkbox" id="zz" value="zz" v-model="web_names">
+                <label for="isTrue">zz</label>
+                <p>{{web_names}}</p>
+                <hr>
+                <h2>单选框绑定</h2>
+                <input type="radio" id="one" value="男" v-model="sex">
+                <label for="one">男</label>
+                <input type="radio" id="two" value="女" v-model="sex">
+                <label for="two">女</label>
+                <p>你选择的性别是:{{sex}}</p>
+                <hr>
+        </div>
+        <script type="text/javascript">
+            var app = new Vue({
+                el : '#app',
+                data:{
+                    message:'hello world',
+                    isTrue:true,
+                    web_names:[],
+                    sex:'男',
+                },
+                methods:{
+                    addScore:function(){
+                        this.score++;
+                    },
+                    decScore:function(){
+                        this.score--;
+                    },
+                    mulScore:function(){
+                        this.score = this.score + parseInt(this.score2);
+                    },
+                },
+                computed: {
+
+                }
+            });
+
+
+        </script>
+    </body>
+</html>
