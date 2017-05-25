@@ -9,56 +9,49 @@
     <body>
         <h1>v-model</h1>
         <div id="app">
-            <p>原始文本信息{{ message }}</p>
-                <h2>文本框</h2>
-                <p></p>v-model:<input type="text" v-model="message">
-                <p></p>v-model.lazy:<input type="text" v-model.lazy="message">
-                <p></p>v-model.number:<input type="text" v-model.number="message">
-                <p></p>v-model.trim:<input type="text" v-model.trim="message">
+            <h4>1、v-model双向数据绑定到文本框</h4>
+            <input type="text" v-model="message">
+            <p>message={{message}}</p>
 
-                <h2>文本框</h2>
-                <input type="textarea" cols="30" rows="10" v-model="message">
-                <hr>
-                <h2>多选框绑定</h2>
-                <input type="checkbox" id="isTrue" v-model="isTrue">
-                <label for="isTrue">{{isTrue}}</label>
-                <hr>
-                <h2>绑定到数组</h2>
-                <input type="checkbox" id="zzilcc" value="zilcc" v-model="web_names">
-                <label for="isTrue">zzilcc</label>
+            <h4>v-model的三个修饰符.lazy,.number,.trim</h4>
+            <p>v-model.lazy:懒加载，延时数据更新</p>
+            <input type="text" v-model.lazy="message1">
+            <p>message={{message1}}</p>
+            <p>v-model.number：只能输入数字</p>
+            <input type="text"  v-model.number="message2">
+            <p>message={{message2}}</p>
+            <p>v-model.trim：自动过滤空格，输入框内无空格</p>
+            <input type="text" v-model.trim="message3">
+            <p>message={{message3}}</p>
+
+            <h4>2、绑定到单选框</h4>
+            <input type="radio" id="one" value='男' v-model="sex">
+            <label for="one">男</label>
+            <input type="radio" id="two" value='女' v-model="sex">
+            <label for="two">女</label>
+            <p>你选择的性别是{{sex}}</p>
+
+            <h4>3、绑定到数组</h4>
+            <input type="checkbox" id="zzilcc" value="zilcc" v-model="web_names">
+                <label for="zzilcc">zzilcc</label>
                 <input type="checkbox" id="hzq" value="hzq" v-model="web_names">
-                <label for="isTrue">hzq</label>
+                <label for="hzq">hzq</label>
                 <input type="checkbox" id="zz" value="zz" v-model="web_names">
-                <label for="isTrue">zz</label>
+                <label for="hzq">zz</label>
                 <p>{{web_names}}</p>
-                <hr>
-                <h2>单选框绑定</h2>
-                <input type="radio" id="one" value="男" v-model="sex">
-                <label for="one">男</label>
-                <input type="radio" id="two" value="女" v-model="sex">
-                <label for="two">女</label>
-                <p>你选择的性别是:{{sex}}</p>
-                <hr>
         </div>
         <script type="text/javascript">
             var app = new Vue({
                 el : '#app',
                 data:{
                     message:'hello world',
-                    isTrue:true,
+                    message1:'懒加载，延时数据更新',
+                    message2:'11',
+                    message3:'自动过滤空格，输入框内无空格',
+                    sex:'',
                     web_names:[],
-                    sex:'男',
                 },
                 methods:{
-                    addScore:function(){
-                        this.score++;
-                    },
-                    decScore:function(){
-                        this.score--;
-                    },
-                    mulScore:function(){
-                        this.score = this.score + parseInt(this.score2);
-                    },
                 },
                 computed: {
 

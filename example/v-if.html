@@ -8,17 +8,25 @@
     </head>
     <body>
         <h1>v-if,v-else,v-show</h1>
-        <hr>
-        <div id="app">
-            <!-- <div v-if="isLogin">zzilcc</div>
-            <div v-else="isLogin">请登陆</div> -->
-            <div v-show="isLogin">zzilcc</div>
+        <div class="app">
+            <div v-if="isLogin">登陆成功</div>
+            <div v-else="isLogin">请登录</div>
+            <input type="checkbox"  id="isLogin" v-model="isLogin">
+            <label for="isLogin">isLogin={{isLogin}} </label>
+            <p>如果isLogin为true显示登陆成功,否则显示登陆失败</p>
+            <div v-show="isLogin">v-show的功能等同于增加css display:none</div>
+            <hr>
+            <p>v-if 是'真正的'条件渲染,因为它会确保在切换过程中条件块内的事件监听器和子组件适当地被销毁和重建.
+v-if 也是惰性的,如果在初始渲染时条件为假,那么什么都不做- - 直到条件第一次为真的时候才会开始渲染条件块,相比之下,v-show
+就简单得多- - 不管初始条件是什么,元素总会被渲染,并且只是简单的基于css进行切换.
+一般来说,v-if 有更高的切换开销,而 v-show 有更高的初始渲染开销.因此,如果需要非常频繁的切换,那么使用v-show好一点;如果在
+运行时条件不太可能改变,则使用v-if 好点.</p>
         </div>
         <script type="text/javascript">
             var app = new Vue({
-                el : '#app',
+                el : '.app',
                 data:{
-                    isLogin : true
+                    isLogin:false,
                 }
             })
         </script>

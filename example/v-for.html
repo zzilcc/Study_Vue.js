@@ -9,49 +9,32 @@
     <body>
         <div id="app">
             <h1>v-for实践</h1>
-            <ul>
-                <li v-for="item in sortItems">
-                    {{ item }}
-                </li>
-            </ul>
-            <hr>
-            <ul>
-                <li v-for="(student,index) in  sortStudent">
-                    {{index+1}}:{{ student.name }}-{{ student.age}}
-                </li>
-            </ul>
+            <h4>v-for主要用在循环中，要循环哪个标签就作用在哪个标签上</h4>
+                <ul>
+                    <li v-for="item in items">{{item}}</li>
+                </ul>
+
+            <h4>v-for还可以显示索引</h4>
+                <ul>
+                    <li v-for="(student,index1) in students">
+                        {{index1}}-{{student.name}}-{{student.age}}
+                    </li>
+                </ul>
         </div>
         <script type="text/javascript">
             var app = new Vue({
                 el : '#app',
                 data:{
-                        items:[1,2,355,43,5,6,7,8],
-                        students:[
-                            {name:'Zzilcc',age:20},
-                            {name:'Netcan',age:19},
-                            {name:'Long',age:17},
-                            {name:'Lily',age:18},
-                        ]
+                    items:[1,44,3,22,532,3,3],
+                    students:[
+                        {name:'zzilcc',age:20},
+                        {name:'hzq',age:19},
+                        {name:'netcan',age:18},
+                    ]
                 },
                 computed: {
-                    sortItems: function(){
-                        return this.items.sort(sortNumber);
                     },
-                    sortStudent: function(){
-                        return sortByKey(this.students,'age');
-                    },
-                }
             });
-            function sortNumber(a,b){
-                return a-b;
-            }
-            function sortByKey(array,key){
-                return array.sort(function(a,b){
-                    var x=a[key];
-                    var y=b[key];
-                    return ((x<y)?-1:((x>y)?1:0));
-                });
-            }
         </script>
     </body>
 </html>

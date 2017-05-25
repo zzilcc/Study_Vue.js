@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>vue.directive实例</title>
+        <script type="text/javascript" src="../assets/js/vue.js">
+        </script>
+    </head>
+    <body>
+        <p>Vue.directive自定义指令</p>
+        <div id="app">
+            <div v-zzilcc="color">{{count}}</div>
+            <button  @click="add">add</button>
+
+        </div>
+        <script type="text/javascript">
+
+                bind:function(){//被绑定
+                     console.log('1 - bind');
+                },
+                inserted:function(){//绑定到节点
+                      console.log('2 - inserted');
+                },
+                update:function(){//组件更新
+                      console.log('3 - update');
+                },
+                componentUpdated:function(){//组件更新完成
+                      console.log('4 - componentUpdated');
+                },
+                unbind:function(){//解绑
+                      console.log('5 - bind');
+                }
+            
+            // el.style = 'color:'+binding.value;
+            var app = new Vue({
+                el : '#app',
+                data:{
+                        count:1,
+                        color:'red',
+                    },
+                    methods:{
+                        add:function(){
+                            this.count++;
+                        },
+                    },
+            });
+
+
+        </script>
+    </body>
+</html>
